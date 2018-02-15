@@ -1,5 +1,5 @@
 {
-  "name": "sass-tools",
+  "name": "fnk-sass-tools",
   "version": "1.0.0",
   "description": "A collection of sass mixins, functions and helpers to use it with your projects.",
   "main": "index.js",
