@@ -1,0 +1,21 @@
+{
+  "name": "sass-tools",
+  "version": "1.0.0",
+  "description": "A collection of sass mixins, functions and helpers to use it with your projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "sass",
+    "tools",
+    "utils",
+    "mixins",
+    "functions",
+    "css",
+    "placeholders",
+    "helpers"
+  ],
+  "author": "Alberto Córcoles acorcoless@gmail.com",
+  "license": "MIT"
+}
