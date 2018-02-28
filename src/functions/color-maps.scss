@@ -1,0 +1,33 @@
+/// Useful to obtain another map with $key and color from another map of maps
+///
+/// @group Color
+///
+/// @param {map} $map map with first level to merge. This it can be an empty map.
+/// @param {map} $obj map of maps. This contain multiple maps.
+/// @param {string} $property String (key) to pass for search the value that you need to extract.
+/// @return {map} New map returned in the output
+
+@function create-map-colors($map, $obj, $property: null) {
+
+    $returned-map: $map;
+
+    @each $key, $value in $obj {
+      @if type-of($value) == "map" {
+
+        @if(map-get($value, $property) ) {
+          $returned-map: map-merge($returned-map, ($key: map-deep-get($value, 'color')));
+        }
+
+        @if($property == null ) {
+          $returned-map: map-merge($returned-map, ($key: map-deep-get($value, 'color')));
+        }
+
+      }
+      @if($property == null ) {
+        @if type-of($value) == "color" {
+          $returned-map: map-merge($returned-map, ($key: $value));
+        }
+      }
+  }// end each
+  @return $returned-map;
+}

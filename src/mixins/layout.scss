@@ -1,0 +1,24 @@
+/// Force an Element To Self-Clear its Children
+/// 
+/// @group Layout
+///
+/// @example
+///   @include clearfix;
+
+@mixin clearfix {
+    *zoom: 1;
+    &:before {
+      content: "";
+      display: table;
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;	
+    }
+  }
+  
+  @mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+  }

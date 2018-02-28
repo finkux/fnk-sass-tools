@@ -1,0 +1,35 @@
+/// Get the first item into a list
+///
+/// @name first
+///
+/// @group Lists
+///
+/// @param {List | String} $layer - Name of layer
+/// @return {Number}
+@function first($list) {
+    @return nth($list, 1);
+  }
+/// Return a map with key and value from a list 
+///
+/// @name getValuesFromList
+///
+/// @group Lists
+///
+/// @param {List} $list - List of keys
+/// @param {Map}  $map - Map to iterate through
+/// @return {Map} - Return a new map with key and value from a list of keys 
+@function getValuesFromList($list, $map) {
+$map-merge:();
+
+@for $i from 1 through length($list) {
+    $key-list: nth($list, $i);
+    
+    @each $name, $value in $map {
+    @if($key-list == $name ) {
+        $map-merge: map-merge($map-merge, ($name : $value))
+    }
+    }
+}
+
+@return $map-merge;
+}

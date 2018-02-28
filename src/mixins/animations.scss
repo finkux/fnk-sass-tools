@@ -1,0 +1,19 @@
+/// Create keyframes with different modifiers
+/// 
+/// @group Animations
+///
+/// @param {String} $name - Name of animation
+///
+/// @example
+///   @include keyframes(fadeOut) {
+///     0% { opacity: 1 }
+///     30% { opacity: 0.6 }
+///     100% { opacity: 0 }
+///   }
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {@content; }
+    @-moz-keyframes #{$name} {@content;}
+    @-ms-keyframes #{$name} {@content;}
+    @keyframes #{$name} {@content;} 
+  }

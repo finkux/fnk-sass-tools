@@ -1,0 +1,84 @@
+/// Return the value of z-index assigned to a layer into a sass map
+///
+/// @group Maps
+///
+/// @access public
+/// @param {String} $layer - Name of layer
+/// @return {Number} Return the value of the layer in integer
+/// @require $z-indexes map into app.variables.scss
+@function z( $layer ) {
+  @if not map-has-key( $z-indexes, $layer ) {
+    @error 'There is no layer named `#{$layer}` in $z-indexes. '
+         + 'Layer should be one of #{map-keys($z-indexes)}.';
+  }
+
+  @return map-get( $z-indexes, $layer );
+}
+
+/// Return a color if exist into a map
+///
+/// @group Maps
+///
+/// @access public
+/// @param {string} $key - Name of key
+/// @return {string}
+@function get-color( $key, $map-colors: $map-of-colors ) {
+  @if map-has-key( $map-colors, $key ) {
+    @return map-get( $map-colors, $key );
+  }
+  @warn 'Unknown `#{$key}` in $colors.';
+  @return null;
+}
+
+
+/// Compute the maximum depth of a map
+///
+/// @group Maps
+///
+/// @param {Map} $map
+/// @return {Number} max depth of `$map`
+@function depth($map) {
+  $level: 1;
+
+  @each $key, $value in $map {
+    @if type-of($value) == "map" {
+      $level: max(depth($value) + 1, $level);
+    }
+  }
+
+  @return $level;
+}
+
+
+/// Fetch nested keys
+///
+/// @group Maps
+///
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+/// @return {*}
+
+@function map-deep-get($map, $keys) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+/// Get font size from a map ($font-sizes).
+///
+/// @group Maps
+///
+/// @access public
+/// @param {string} $key - Name of key
+/// @return {string}
+/// @require $font-sizes map into app.variables.scss
+@function get-size( $key ) {
+  @if map-has-key( $font-sizes, $key ) {
+    @return map-get( $font-sizes, $key );
+  }
+
+  @warn 'Unknown `#{$key}` in $font-sizes.';
+  @return null;
+}

@@ -1,10 +1,11 @@
 {
   "name": "fnk-sass-tools",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A collection of sass mixins, functions and helpers to use it with your projects.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "docs": "sassdoc ./src/"
   },
   "keywords": [
     "sass",
@@ -17,5 +18,8 @@
     "helpers"
   ],
   "author": "Alberto Córcoles acorcoless@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "sassdoc": "^2.5.0"
+  }
 }

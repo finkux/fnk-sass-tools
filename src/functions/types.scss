@@ -1,0 +1,131 @@
+/// Check type if is number
+///
+/// @name is-number
+///
+/// @group Types
+///
+/// @param {number} type
+/// @return {Boolean}
+@function is-number($value) {
+    @return type-of($value) == 'number';
+  }
+
+/// Check if is 'ms' or 's'
+///
+/// @name is-time
+///
+/// @group Types
+///
+/// @param {number} type
+/// @return {Boolean}
+@function is-time($value) {
+  @return is-number($value) and index('ms' 's', unit($value)) != null;
+}
+  
+/// Check duration if is ms or s
+///
+/// @name is-duration
+///
+/// @group Types
+///
+/// @param {number} type
+/// @return {Boolean}
+@function is-duration($value) {
+  @return is-time($value);
+}
+
+/// Check degrees
+///
+/// @name is-angle
+///
+/// @group Types
+///
+/// @param {number} type 'deg' 'rad' 'grad' 'turn'
+/// @return {Boolean}
+@function is-angle($value) {
+  @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+}
+
+/// Check if is integer
+///
+/// @name is-integer
+///
+/// @group Types
+///
+/// @param {number} type
+/// @return {Boolean}
+@function is-integer($value) {
+  @return is-number($value) and round($value) == $value;
+}
+
+/// Check if is a relative unit
+///
+/// @name is-relative-length
+///
+/// @group Types
+///
+/// @param {number} 'em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax'
+/// @return {Boolean}
+@function is-relative-length($value) {
+  @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+}
+
+/// Check if is an absolute unit
+///
+/// @name is-absolute-length
+///
+/// @group Types
+///
+/// @param {number} 'cm' 'mm' 'in' 'px' 'pt' 'pc'
+/// @return {Boolean} 
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}
+
+/// Check if is a percentage
+///
+/// @name is-percentage
+///
+/// @group Types
+///
+/// @param {number} '%'
+/// @return {Boolean} 
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+/// Check if is an relative or absolute unit
+///
+/// @name is-length
+///
+/// @group Types
+///
+/// @param {number} type 'em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax' or 'cm' 'mm' 'in' 'px' 'pt' 'pc'
+/// @return {Boolean}  
+@function is-length($value) {
+  @return is-relative-length($value) or is-absolute-length($value);
+}
+  
+/// Check if is a unit to measure a resolution
+///
+/// @name is-resolution
+///
+/// @group Types
+///
+/// @param {number} 'dpi' 'dpcm' 'dppx'
+/// @return {Boolean}  
+@function is-resolution($value) {
+  @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+}
+
+/// Check if is a position property
+///
+/// @name is-position
+///
+/// @group Types
+///
+/// @param {number} 'top' 'right' 'bottom' 'left' 'center'
+/// @return {Boolean} 
+@function is-position($value) {
+  @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+}

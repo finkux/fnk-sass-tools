@@ -1,0 +1,26 @@
+/// Help to create a multiple css classes with diferent values and sequencial names.
+///
+/// @group Generators
+///
+/// @param {string} $name - Name of css class
+/// @param {string} $property - Type of property
+/// @param {number} $items - Times to paint
+/// @param {number} $steps - Unit to be multiplied
+///
+/// @example
+///   @include generate-dynamic-classes(space-top, margin-top, 10, 5);
+///
+/// @example
+/// .space-top5 { margin-top: 5px }
+///  ...
+/// .space-top50 { margin-top: 50px }
+
+@mixin generate-dynamic-classes($name, $property, $items, $steps: 1) {
+    @for $i from 1 through $items {
+      $num: ( $i * $steps );
+        [#{$name}#{$num}],
+      .#{$name}#{$num} {
+          #{$property}: (0px + $num);
+      }
+    }
+  }

@@ -1,0 +1,30 @@
+/// Parse integer
+/// 
+/// @group Units
+///
+/// @param {Number} $n - number to parse
+/// @return {Number}
+@function parse-int( $n ) {
+    @return $n / ( $n * 0 + 1 );
+  }
+  
+/// Convert a value from px to rems
+/// 
+/// @group Units
+///
+/// @param {List | Number} $args - Number to convert.
+/// @return {List | Number }
+@function rem($args, $base: 10px) {
+  $list-rems: null;
+  
+  @each $val in $args {
+    $rem-val: $val / $base;
+    @if(is-number($rem-val)) {
+      $list-rems: append($list-rems, #{$rem-val}rem);  
+    } @else {
+      @error "$args should be a list of number types";
+    }
+    
+  }
+  @return $list-rems;
+}

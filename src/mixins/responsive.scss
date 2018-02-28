@@ -1,0 +1,51 @@
+// Mixin media query with sass maps
+// -----------------------------------------
+// @include respond-to is for all media 
+@mixin respond-to($breakpoint, $min-max: max, $breakpoints-list: $breakpoints) { 
+  
+    @if map-has-key($breakpoints-list, $breakpoint) {
+  
+      @if($min-max == max) {
+        @media (max-width: #{map-get($breakpoints-list, $breakpoint)}) {
+          @content;
+        }      
+      }
+  
+      @if($min-max == min) {
+        @media (min-width: #{map-get($breakpoints-list, $breakpoint)}) {
+          @content;
+        }      
+      }
+  
+    }
+        
+    @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Please make sure it is defined in `$breakpoints` map.";
+    }
+  }
+
+// @include respond-to-land is for all media and screen landscape
+@mixin respond-to-land($breakpoint, $min-max: max, $breakpoints-list: $breakpoints) { 
+  
+    @if map-has-key($breakpoints-list, $breakpoint) {
+  
+      @if($min-max == max) {
+        @media (max-width: #{map-get($breakpoints-list, $breakpoint)}) and (orientation:landscape) {
+          @content;
+        }      
+      }
+  
+      @if($min-max == min) {
+        @media (min-width: #{map-get($breakpoints-list, $breakpoint)}) and (orientation:landscape) {
+          @content;
+        }      
+      }
+  
+    }
+
+    @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Please make sure it is defined in `$breakpoints` map.";
+    }
+  }
