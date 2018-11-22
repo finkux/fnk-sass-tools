@@ -4,12 +4,8 @@ A collection of sass mixins, functions and helpers to use it in your sass projec
 
 ## Get Started
 
-You can install with npm or download package
+Download package
 
-### With NPM
-
-npm install fnk-sass-tools --save
-
-After that, in your project search the correct path. By default is into node_modules/fnk-sass-tools/src/sass-tools
+Put the correct path. For example into node_modules/fnk-sass-tools/src/sass-tools
 
 You also can to use @import in your sass to get only a mixin or function, but take care with dependencies. Check the documentation to see more about that.
