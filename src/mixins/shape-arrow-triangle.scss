@@ -1,0 +1,30 @@
+@mixin  shape-arrow-triangle($size: 5px, $color: black, $arrow: 'down') {
+    display: block;
+    width: 0;
+    height: 0;
+    
+    @if($arrow == 'down') {
+      border-top: $size solid $color;
+      border-right: $size solid transparent;
+      border-left: $size solid transparent;
+    }
+    
+    @if($arrow == 'up') {      
+      border-right: $size solid transparent;
+      border-bottom: $size solid $color;
+      border-left: $size solid transparent;
+    }
+    
+    @if($arrow == 'right') {
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-left: $size solid $color;
+    }
+    
+    @if($arrow == 'left') {
+      border-right: $size solid transparent;
+      border-bottom: $size solid $color;      
+      border-left: $size solid transparent;
+    }    
+
+}

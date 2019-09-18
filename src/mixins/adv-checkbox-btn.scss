@@ -1,0 +1,39 @@
+/// Style label to create custom checkboxes
+/// 
+/// @group Forms
+///
+/// @param {Boolean} $checked - By default false. If true create variant :checked state
+///
+/// @example
+///   .custom-checkbox {
+///    
+///     @include adv-checkbox(false) {
+///         background: red;
+///     } 
+///
+///     @include adv-checkbox(true) {
+///         background: red;
+///     } 
+///
+///   }
+@mixin adv-checkbox($checked: false) {
+    @if $checked == false {
+      input {
+        &[type="checkbox"] {
+          & + label {
+            @content;
+          }
+        }
+      }
+    }
+  
+    @if $checked == true {
+      input {
+        &[type="checkbox"] {
+          & + label {
+            @content;
+          }
+        }
+      }
+    }
+  }

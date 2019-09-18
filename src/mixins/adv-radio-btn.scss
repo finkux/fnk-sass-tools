@@ -1,0 +1,40 @@
+/// Style label to create custom radio buttons
+/// 
+/// @group Forms
+///
+/// @param {Boolean} $checked - By default false. If true create variant :checked state
+///
+/// @example
+///   .custom-radio {
+///    
+///     @include adv-radio(false) {
+///         background: red;
+///     } 
+///
+///     @include adv-radio(true) {
+///         background: red;
+///     } 
+///
+///   }
+@mixin adv-radio($checked: false) {
+    @if $checked == false {
+      input {
+        &[type="radio"] {
+          & + label {
+            @content;
+          }
+        }
+      }
+    }
+  
+    @if $checked == true {
+      input {
+        &[type="radio"] {
+          & + label {
+            @content;
+          }
+        }
+      }
+    }
+  }
+  

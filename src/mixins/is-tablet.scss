@@ -1,0 +1,33 @@
+/// Encapsulate media query to check if is a tablet with only css
+/// 
+/// @group Responsive
+///
+///
+/// @example
+///   .right-sidebar {
+///     display: block;
+///
+///     @include is-tablet-portrait {
+///         display: none;
+///     }
+///   }
+
+@mixin is-tablet-portrait {
+    @media only screen and 
+      (hover: none) and 
+      (pointer: coarse) and 
+      (min-device-width:760px) and 
+      (orientation:portrait){
+      @content;
+    }
+  }
+  
+  @mixin is-tablet-landscape {
+    @media only screen and 
+      (hover: none) and 
+      (pointer: coarse) and 
+      (min-width:1024px) and 
+      (orientation: landscape){
+      @content;
+    }
+  }
