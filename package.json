@@ -20,6 +20,6 @@
   "author": "Alberto Córcoles acorcoless@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "sassdoc": "^2.5.0"
+    "sassdoc": "^2.7.4"
   }
 }
